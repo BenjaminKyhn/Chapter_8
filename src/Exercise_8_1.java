@@ -1,35 +1,28 @@
-import java.util.Scanner;
-
 public class Exercise_8_1 {
+    public static double sumRow(double[][] m, int rowIndex){
+        double sum = 0;
+        for (int i = 0; i < m[rowIndex].length; i++) {
+            sum = sum + m[rowIndex][i];
+        }
+        return sum;
+    }
+
     public static void main(String[] args) {
-        int[][] m = getArray(); // Get an array
+        double[][] array = new double[3][4];
+        double[][] numbers = {
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9},
+                {10, 11, 12}
+        };
 
-        // Display sum of elements
-        System.out.println("\nSum of all elements is " + sum(m));
-    }
-
-    public static int[][] getArray(){
-        // Create a scanner
-        Scanner input = new Scanner(System.in);
-
-        // Enter array values
-        int[][] m = new int[3][4];
-        System.out.println("Enter " + m.length + " rows and " + m[0].length + " colums: ");
-        for (int i = 0; i < m.length; i++) {
-            for (int j = 0; j < m[i].length; j++) {
-                m[i][j] = input.nextInt();
+        for (int row = 0; row < array.length; row++) {
+            for (int column = 0; column < array[row].length; column++) {
+                array[row][column] = Math.random()*10;
             }
         }
-        return m;
-    }
 
-    public static int sum(int[][] m){
-        int total = 0;
-        for (int row = 0; row < m.length; row++) {
-            for (int column = 0; column < m[row].length; column++) {
-                total += m[row][column];
-            }
-        }
-        return total;
+        System.out.println(sumRow(array, 2));
+        System.out.println(sumRow(numbers,1));
     }
 }

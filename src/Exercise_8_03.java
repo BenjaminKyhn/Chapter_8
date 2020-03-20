@@ -36,9 +36,11 @@ public class Exercise_8_03 {
 
     public static void selectionSort(int[][] matrix){
         for (int row = 0; row < matrix.length; row++) {
+            // Initialize the values in row 0 as the current max values
             int currentMax = matrix[row][1];
             int currentMaxIndex = row;
 
+            // Update current max values
             for (int i = row + 1; i < matrix.length; i++) {
                 if (currentMax < matrix[i][1]){
                     currentMax = matrix[i][1];
@@ -46,9 +48,12 @@ public class Exercise_8_03 {
                 }
             }
 
+            // Swap currentMax and currentMaxIndex with the values in the next row
             if (currentMaxIndex != row){
                 matrix[currentMaxIndex][1] = matrix[row][1];
+                matrix[currentMaxIndex][0] = matrix[row][0];
                 matrix[row][1] = currentMax;
+                matrix[row][0] = currentMaxIndex;
             }
         }
     }

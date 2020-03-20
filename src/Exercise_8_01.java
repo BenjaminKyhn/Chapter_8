@@ -1,4 +1,4 @@
-public class Exercise_8_1 {
+public class Exercise_8_01 {
     public static double sumRow(double[][] m, int rowIndex){
         double sum = 0;
         for (int i = 0; i < m[rowIndex].length; i++) {

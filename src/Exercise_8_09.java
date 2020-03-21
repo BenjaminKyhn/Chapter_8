@@ -5,7 +5,7 @@ public class Exercise_8_09 {
 
         String[][] board = getBoard();
 
-        String gameOver = "no";
+        int gameOver = 0;
 
         Scanner input = new Scanner(System.in);
 
@@ -27,7 +27,20 @@ public class Exercise_8_09 {
                 }
             }
             print(board);
-            System.out.println("Is there a win for X? " + horizontalWin(board, " X "));
+
+            // Check if player X won
+            if (checkAllWins(board, " X ")){
+                gameOver = 1;
+                System.out.println("Player X wins!");
+                break;
+            }
+
+            // Check if the game is a draw
+            if (draw(board, "   ")){
+                gameOver = 1;
+                System.out.println("The game is a draw!");
+                break;
+            }
 
             // Player Y move
             validMove = false;
@@ -41,12 +54,22 @@ public class Exercise_8_09 {
                     validMove = true;
                 }
             }
-            print(board);
-            System.out.println("Is there a win for O? " + verticalWin(board, " O "));
 
-        } while (gameOver.equals("no"));
+            // Check if player O won
+            if (checkAllWins(board, " O ")){
+                gameOver = 1;
+                System.out.println("Player O wins!");
+                break;
+            }
 
+            // Check if the game is a draw
+            if (draw(board, "   ")){
+                gameOver = 1;
+                System.out.println("The game is a draw!");
+                break;
+            }
 
+        } while (gameOver == 0);
     }
 
     // Method for initializing the board array
@@ -71,14 +94,17 @@ public class Exercise_8_09 {
         }
     }
 
+    // Method for placing a piece on the board
     public static void placePiece(String[][] board, String piece, int row, int column) {
         board[row][column] = " " + piece + " ";
     }
 
+    // Method for checking if the piece placement is valid
     public static boolean isValidMove(String[][] board, int row, int column) {
         return board[row][column].equals("   ");
     }
 
+    // Check for horizontal win
     public static boolean horizontalWin(String[][] board, String piece) {
         boolean win = false;
         for (int row = 0; row < board.length; row++) {
@@ -88,6 +114,7 @@ public class Exercise_8_09 {
         return win;
     }
 
+    // Check for vertical win
     public static boolean verticalWin(String[][] board, String piece) {
         boolean win = false;
         for (int column = 0; column < board[0].length; column++) {
@@ -95,6 +122,42 @@ public class Exercise_8_09 {
                 win = true;
         }
         return win;
+    }
+
+    // Check for diagonal win
+    public static boolean diagonalWin(String[][] board, String piece) {
+        boolean win = false;
+        if (board[0][0].equals(piece) && board[1][1].equals(piece) && board[2][2].equals(piece))
+            win = true;
+        return win;
+    }
+
+    // Check for antidiagonal win
+    public static boolean antidiagonalWin(String[][] board, String piece) {
+        boolean win = false;
+        if (board[0][2].equals(piece) && board[1][1].equals(piece) && board[2][0].equals(piece))
+            win = true;
+        return win;
+    }
+
+    // Check for win on all lines
+    public static boolean checkAllWins(String[][] board, String piece){
+        boolean win = false;
+        if (horizontalWin(board, piece) || verticalWin(board, piece) || diagonalWin(board, piece) || antidiagonalWin(board,piece))
+            win = true;
+        return win;
+    }
+
+    // Check for draw
+    public static boolean draw(String[][] board, String piece){
+        boolean draw = true;
+        for (int row = 0; row < board.length; row++) {
+            for (int column = 0; column < board[row].length; column++) {
+                if (board[row][column].equals(piece))
+                    draw = false;
+            }
+        }
+        return draw;
     }
 }
 

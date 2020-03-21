@@ -9,7 +9,7 @@ public class Exercise_8_09 {
 
         Scanner input = new Scanner(System.in);
 
-        boolean validMove = false;
+        boolean validMove;
 
         do {
             print(board);

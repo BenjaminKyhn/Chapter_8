@@ -38,18 +38,7 @@ public class Exercise_8_11 {
         return bin;
     }
 
-    // Convert the 0's and 1's in the binary String to H's and T's
-    public static String convertStringToChar(String s){
-        StringBuilder headsTails = new StringBuilder();
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == '0')
-                headsTails.append('H');
-            else
-                headsTails.append('T');
-        }
-        return headsTails.toString();
-    }
-
+    // Convert the 0's and 1's in the binary String to H's and T's and place them in a two-dimensional array
     public static char[][] coinsMatrix(String bin){
         int charNumber = 0;
         char[][] coinsMatrix = new char[3][3];
@@ -65,6 +54,28 @@ public class Exercise_8_11 {
         return coinsMatrix;
     }
 
+    // Print out the 3x3 matrix
+    public static void printMatrix(char[][] matrix){
+        for (int row = 0; row < matrix.length; row++) {
+            for (int column = 0; column < matrix[row].length; column++) {
+                System.out.print(matrix[row][column] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    // Convert the 0's and 1's in the binary String to H's and T's
+    public static String convertStringToChar(String s){
+        StringBuilder headsTails = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '0')
+                headsTails.append('H');
+            else
+                headsTails.append('T');
+        }
+        return headsTails.toString();
+    }
+
     // Print out the String in a 3x3 formation
     public static void printString(String bin) {
         for (int i = 0; i < bin.length(); i++) {
@@ -72,15 +83,6 @@ public class Exercise_8_11 {
                 System.out.print("\n " + bin.charAt(i) + " ");
             else
                 System.out.print(" " + bin.charAt(i) + " ");
-        }
-    }
-
-    public static void printMatrix(char[][] matrix){
-        for (int row = 0; row < matrix.length; row++) {
-            for (int column = 0; column < matrix[row].length; column++) {
-                System.out.print(matrix[row][column] + " ");
-            }
-            System.out.println();
         }
     }
 }

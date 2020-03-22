@@ -13,6 +13,7 @@ public class Exercise_8_11 {
         print(convertStringToChar(decToBin(number)));
     }
 
+    // Method for converting a decimal number to a String resembling a binary number
     public static String decToBin(int dec) {
         StringBuilder bin = new StringBuilder();
         if (dec == 0) {
@@ -26,6 +27,7 @@ public class Exercise_8_11 {
         return padToNinePlaces(bin.toString());
     }
 
+    // Pad the string with zeroes so that the length of the string is always 9
     public static String padToNinePlaces(String bin) {
         if (bin.length() < 9) {
             for (int i = bin.length(); i < 9; i++) {
@@ -35,6 +37,7 @@ public class Exercise_8_11 {
         return bin;
     }
 
+    // Convert the 0's and 1's in the binary String to H's and T's
     public static String convertStringToChar(String s){
         StringBuilder headsTails = new StringBuilder();
         for (int i = 0; i < s.length(); i++) {
@@ -46,6 +49,7 @@ public class Exercise_8_11 {
         return headsTails.toString();
     }
 
+    // Print out the String in a 3x3 formation
     public static void print(String bin) {
         for (int i = 0; i < bin.length(); i++) {
             if (i % 3 == 0 && i != 0)

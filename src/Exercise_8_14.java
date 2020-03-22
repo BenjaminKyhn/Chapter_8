@@ -42,6 +42,16 @@ public class Exercise_8_14 {
         }
         if (!identicals)
             System.out.println("No same numbers on the major diagonal");
+
+        // Check if the identicalColumns contains identical columns and print it out if it does
+        int[] identicalSubDiagonal = checkForIdenticalSubDiagonal(matrix);
+        identicals = false;
+        if (identicalSubDiagonal[0] == 1) {
+            System.out.println("All " + identicalSubDiagonal[1] + "'s the sub-diagonal");
+            identicals = true;
+        }
+        if (!identicals)
+            System.out.println("No same numbers on the sub-diagonal");
     }
 
     public static void fillMatrix(int[][] matrix) {
@@ -102,6 +112,21 @@ public class Exercise_8_14 {
             if (matrix[i][i] == matrix[i - 1][i - 1]) {
                 identicalsArray[0] = 1;
                 identicalsArray[1] = matrix[i][i];
+            } else {
+                identicalsArray[0] = 0;
+                break;
+            }
+
+        }
+        return identicalsArray;
+    }
+
+    public static int[] checkForIdenticalSubDiagonal(int[][] matrix) {
+        int[] identicalsArray = new int[2];
+        for (int i = 1; i < matrix.length; i++) {
+            if (matrix[i][matrix.length - (i + 1)] == matrix[i - 1][matrix.length - i]) {
+                identicalsArray[0] = 1;
+                identicalsArray[1] = matrix[i - 1][matrix.length - i];
             } else {
                 identicalsArray[0] = 0;
                 break;

@@ -10,7 +10,8 @@ public class Exercise_8_11 {
             System.out.println("Enter a number between 0 and 511: ");
             number = input.nextInt();
         } while (number < 0 || number > 511);
-        print(convertStringToChar(decToBin(number)));
+        printMatrix(coinsMatrix(decToBin(number)));
+        //        printString(convertStringToChar(decToBin(number)));
     }
 
     // Method for converting a decimal number to a String resembling a binary number
@@ -49,13 +50,37 @@ public class Exercise_8_11 {
         return headsTails.toString();
     }
 
+    public static char[][] coinsMatrix(String bin){
+        int charNumber = 0;
+        char[][] coinsMatrix = new char[3][3];
+        for (int row = 0; row < coinsMatrix.length; row++) {
+            for (int column = 0; column < coinsMatrix[row].length; column++) {
+                if (bin.charAt(charNumber) == '0')
+                    coinsMatrix[row][column]= 'H';
+                else
+                    coinsMatrix[row][column]= 'T';
+                charNumber++;
+            }
+        }
+        return coinsMatrix;
+    }
+
     // Print out the String in a 3x3 formation
-    public static void print(String bin) {
+    public static void printString(String bin) {
         for (int i = 0; i < bin.length(); i++) {
             if (i % 3 == 0 && i != 0)
                 System.out.print("\n " + bin.charAt(i) + " ");
             else
                 System.out.print(" " + bin.charAt(i) + " ");
+        }
+    }
+
+    public static void printMatrix(char[][] matrix){
+        for (int row = 0; row < matrix.length; row++) {
+            for (int column = 0; column < matrix[row].length; column++) {
+                System.out.print(matrix[row][column] + " ");
+            }
+            System.out.println();
         }
     }
 }

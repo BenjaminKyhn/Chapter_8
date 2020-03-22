@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Exercise_8_12 {
+public class Exercise_8_13 {
     public static void main(String[] args) {
         System.out.println("Enter the number of rows and columns of the array: ");
         Scanner input = new Scanner(System.in);

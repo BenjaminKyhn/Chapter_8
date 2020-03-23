@@ -54,6 +54,7 @@ public class Exercise_8_14 {
             System.out.println("No same numbers on the sub-diagonal");
     }
 
+    // Fill the matrix with 0's and 1's
     public static void fillMatrix(int[][] matrix) {
         for (int row = 0; row < matrix.length; row++) {
             for (int column = 0; column < matrix[row].length; column++) {
@@ -62,6 +63,7 @@ public class Exercise_8_14 {
         }
     }
 
+    // Print the matrix
     public static void printMatrix(int[][] matrix) {
         for (int row = 0; row < matrix.length; row++) {
             for (int column = 0; column < matrix[row].length; column++) {
@@ -106,6 +108,7 @@ public class Exercise_8_14 {
         return identicalsArray;
     }
 
+    // Repeat for diagonal
     public static int[] checkForIdenticalDiagonal(int[][] matrix) {
         int[] identicalsArray = new int[2];
         for (int i = 1; i < matrix.length; i++) {
@@ -121,6 +124,7 @@ public class Exercise_8_14 {
         return identicalsArray;
     }
 
+    // Repeat for sub-diagonal
     public static int[] checkForIdenticalSubDiagonal(int[][] matrix) {
         int[] identicalsArray = new int[2];
         for (int i = 1; i < matrix.length; i++) {

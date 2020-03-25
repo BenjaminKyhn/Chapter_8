@@ -12,7 +12,7 @@ public class Exercise_8_18 {
         }
     }
 
-    // Shuffles all the numbers
+    // Shuffles all the elements
     public static void shuffle(int[][] m) {
         // Shuffle the cards
         for (int row = 0; row < m.length; row++) {

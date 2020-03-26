@@ -4,24 +4,45 @@ public class Exercise_8_20 {
     public static void main(String[] args) {
         String[][] board = getBoard();
         Scanner input = new Scanner(System.in);
-
+        boolean validMove;
         int gameOver = 0;
 
         print(board);
 
         do {
-            System.out.println("Drop a red disk at column (0-6)");
-            int redColumn = input.nextInt();
-            placeDisk(board, "R", redColumn);
+            validMove = false;
+            while (!validMove) {
+                System.out.println("Drop a red disk at column (0-6)");
+                int redColumn = input.nextInt();
+                if (redColumn >= 0 && redColumn <= 6) {
+                    if (isValidMove(board, redColumn)) {
+                        placeDisk(board, "R", redColumn);
+                        validMove = true;
+                        System.out.println(validMove);
+                    } else
+                        System.out.println("Disc cannot be placed in a column that has no empty spaces.");
+                } else
+                    System.out.println("You must choose a column between 0 and 6.");
+            }
             print(board);
 
-            System.out.println("Drop a yellow disk at column (0-6)");
-            int yellowColumn = input.nextInt();
-            placeDisk(board, "Y", yellowColumn);
+            validMove = false;
+            while (!validMove) {
+                System.out.println("Drop a yellow disk at column (0-6)");
+                int yellowColumn = input.nextInt();
+                if (yellowColumn >= 0 && yellowColumn <= 6) {
+                    if (isValidMove(board, yellowColumn) && yellowColumn >= 0 && yellowColumn <= 6) {
+                        placeDisk(board, "Y", yellowColumn);
+                        validMove = true;
+                        System.out.println(validMove);
+                    } else
+                        System.out.println("Disc cannot be placed in a column that has no empty spaces.");
+                } else
+                    System.out.println("You must choose a column between 0 and 6.");
+            }
             print(board);
 
         } while (gameOver == 0);
-
 
 
     }
@@ -50,16 +71,24 @@ public class Exercise_8_20 {
 
     // Method for placing a piece on the board
     public static void placeDisk(String[][] board, String disc, int column) {
-        boolean diskPlaced = false;
         for (int row = board.length - 1; row >= 0; row--) {
-            if (board[row][column].equals(" ")){
+            if (board[row][column].equals(" ")) {
                 board[row][column] = disc;
-                diskPlaced = true;
                 break;
             }
         }
-        if (!diskPlaced){
-            System.out.println("Disc cannot be placed in a column that has no empty spaces.");
+    }
+
+    // Method for checking if the piece placement is valid
+    public static boolean isValidMove(String[][] board, int column) {
+        boolean validMove = false;
+        for (int row = board.length - 1; row >= 0; row--) {
+            if (board[row][column].equals(" ")) {
+                validMove = true;
+                break;
+            }
         }
+        return validMove;
     }
 }
+

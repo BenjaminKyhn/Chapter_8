@@ -5,7 +5,6 @@ public class Exercise_8_20 {
         String[][] board = getBoard();
         Scanner input = new Scanner(System.in);
         boolean validMove;
-        int gameOver = 0;
 
         print(board);
 
@@ -18,16 +17,15 @@ public class Exercise_8_20 {
                     if (isValidMove(board, redColumn)) {
                         placeDisk(board, "R", redColumn);
                         validMove = true;
-                        System.out.println(validMove);
                     } else
                         System.out.println("Disc cannot be placed in a column that has no empty spaces.");
                 } else
                     System.out.println("You must choose a column between 0 and 6.");
             }
             print(board);
-            if (isConsecutiveFourAntidiagonally(board, "R")){
+            if (isConsecutiveFour(board, "R")){
                 System.out.println("The red player won");
-                gameOver = 1;
+                break;
             }
 
             validMove = false;
@@ -38,19 +36,18 @@ public class Exercise_8_20 {
                     if (isValidMove(board, yellowColumn) && yellowColumn >= 0 && yellowColumn <= 6) {
                         placeDisk(board, "Y", yellowColumn);
                         validMove = true;
-                        System.out.println(validMove);
                     } else
                         System.out.println("Disc cannot be placed in a column that has no empty spaces.");
                 } else
                     System.out.println("You must choose a column between 0 and 6.");
             }
             print(board);
-            if (isConsecutiveFourAntidiagonally(board, "Y")){
+            if (isConsecutiveFour(board, "Y")){
                 System.out.println("The yellow player won");
-                gameOver = 1;
+                break;
             }
 
-        } while (gameOver == 0);
+        } while (true);
     }
 
     // Method for printing out the board

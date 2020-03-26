@@ -25,7 +25,10 @@ public class Exercise_8_20 {
                     System.out.println("You must choose a column between 0 and 6.");
             }
             print(board);
-            System.out.println("4 in a row? " + isConsecutiveFour(board, "R"));
+            if (isConsecutiveFourAntidiagonally(board, "R")){
+                System.out.println("The red player won");
+                gameOver = 1;
+            }
 
             validMove = false;
             while (!validMove) {
@@ -42,11 +45,12 @@ public class Exercise_8_20 {
                     System.out.println("You must choose a column between 0 and 6.");
             }
             print(board);
-            System.out.println("4 in a row? " + isConsecutiveFour(board, "Y"));
+            if (isConsecutiveFourAntidiagonally(board, "Y")){
+                System.out.println("The yellow player won");
+                gameOver = 1;
+            }
 
         } while (gameOver == 0);
-
-
     }
 
     // Method for printing out the board

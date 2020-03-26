@@ -25,6 +25,7 @@ public class Exercise_8_20 {
                     System.out.println("You must choose a column between 0 and 6.");
             }
             print(board);
+            System.out.println("4 in a row? " + isConsecutiveFour(board, "R"));
 
             validMove = false;
             while (!validMove) {
@@ -41,6 +42,7 @@ public class Exercise_8_20 {
                     System.out.println("You must choose a column between 0 and 6.");
             }
             print(board);
+            System.out.println("4 in a row? " + isConsecutiveFour(board, "Y"));
 
         } while (gameOver == 0);
 
@@ -89,6 +91,53 @@ public class Exercise_8_20 {
             }
         }
         return validMove;
+    }
+
+    public static boolean isConsecutiveFour(String[][] board, String disc){
+        if (isConsecutiveFourHorizontally(board, disc) || isConsecutiveFourVertically(board, disc)
+                || isConsecutiveFourDiagonally(board, disc) || isConsecutiveFourAntidiagonally(board, disc))
+            return true;
+        return false;
+    }
+
+    public static boolean isConsecutiveFourHorizontally(String[][] board, String disc) {
+        for (int row = 0; row < board.length; row++) {
+            for (int column = 0; column < board[row].length-3; column++) {
+                if (board[row][column].equals(disc) && board[row][column+1].equals(disc) && board[row][column+2].equals(disc) && board[row][column+3].equals(disc))
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean isConsecutiveFourVertically(String[][] board, String disc) {
+        for (int column = 0; column < board[0].length; column++) {
+            for (int row = 0; row < board.length-3; row++) {
+                if (board[row][column].equals(disc) && board[row+1][column].equals(disc) && board[row+2][column].equals(disc) && board[row+3][column].equals(disc))
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean isConsecutiveFourDiagonally(String[][] board, String disc) {
+        for (int row = 0; row < board.length-3; row++) {
+            for (int column = 0; column < board[row].length-3; column++) {
+                if (board[row][column].equals(disc) && board[row+1][column+1].equals(disc) && board[row+2][column+2].equals(disc) && board[row+3][column+3].equals(disc))
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean isConsecutiveFourAntidiagonally(String[][] board, String disc) {
+        for (int row = 0; row < board.length-3; row++) {
+            for (int column = 3; column < board[row].length; column++) {
+                if (board[row][column].equals(disc) && board[row+1][column-1].equals(disc) && board[row+2][column-2].equals(disc) && board[row+3][column-3].equals(disc))
+                    return true;
+            }
+        }
+        return false;
     }
 }
 

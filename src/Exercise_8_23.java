@@ -4,10 +4,10 @@ public class Exercise_8_23 {
         // Fill the first 5x5 part of the matrix with 1's or 0's randomly
         fillMatrix(matrix);
 
-        // Correct the rows so that there are always an equal amount of 1's
+        // Fill in the last row so that there are always an equal amount of 1's
         correctRows(matrix);
 
-        // Correct the columns so that there are always an equal amount of 1's
+        // Fill in the last column so that there are always an equal amount of 1's
         correctColumns(matrix);
 
         // Flip a random cell
@@ -15,6 +15,9 @@ public class Exercise_8_23 {
 
         // Print out the matrix
         printMatrix(matrix);
+
+        // Find the flipped cell
+        System.out.println("The flipped cell is at (" + checkRows(matrix) + ", " + checkColumns(matrix) + ")");
     }
 
     // Fill the matrix with 0's and 1's
@@ -69,5 +72,33 @@ public class Exercise_8_23 {
             matrix[row][column] = 1;
         else if (matrix[row][column] == 1)
             matrix[row][column] = 0;
+    }
+
+    // Method for checking rows
+    public static int checkRows(int[][] matrix) {
+        for (int row = 0; row < matrix.length; row++) {
+            int count = 0;
+            for (int column = 0; column < matrix[row].length; column++) {
+                if (matrix[row][column] == 1)
+                    count++;
+            }
+            if (count % 2 != 0)
+                return row;
+        }
+        return -1;
+    }
+
+    // Method for checking columns
+    public static int checkColumns(int[][] matrix) {
+        for (int column = 0; column < matrix[0].length; column++) {
+            int count = 0;
+            for (int row = 0; row < matrix.length; row++) {
+                if (matrix[row][column] == 1)
+                    count++;
+            }
+            if (count % 2 != 0)
+                return column;
+        }
+        return -1;
     }
 }

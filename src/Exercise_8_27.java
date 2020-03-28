@@ -9,19 +9,19 @@ public class Exercise_8_27 {
                 {0.07, 0.021, 0.14, 0.2},
         };
 
-//        double[][] matrix2 = new double[4][4];
-//
-//        System.out.println("Enter a 4-by-4 matrix row by row: ");
-//        Scanner input = new Scanner(System.in);
-//        for (int row = 0; row < matrix2.length; row++) {
-//            for (int column = 0; column < matrix2[row].length; column++) {
-//                matrix2[row][column] = input.nextDouble();
-//            }
-//        }
+        double[][] matrix2 = new double[4][4];
+
+        System.out.println("Enter a 4-by-4 matrix row by row: ");
+        Scanner input = new Scanner(System.in);
+        for (int row = 0; row < matrix2.length; row++) {
+            for (int column = 0; column < matrix2[row].length; column++) {
+                matrix2[row][column] = input.nextDouble();
+            }
+        }
 
         // Print out the sorted matrix
         System.out.println("The row-sorted array is: ");
-        printMatrix(sortColumns(matrix));
+        printMatrix(sortColumns(matrix2));
     }
 
     // Method for sorting the rows

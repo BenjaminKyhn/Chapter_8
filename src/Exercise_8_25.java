@@ -1,11 +1,16 @@
+import java.util.Scanner;
+
 public class Exercise_8_25 {
     public static void main(String[] args) {
-        double[][] matrix = {
-                {0.15, 0.875, 0.375},
-                {0.55, 0.005, 0.225},
-                {0.30, 0.12, 0.4},
-        };
+        double[][] matrix = new double[3][3];
 
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter a 3-by-3 matrix row by row: ");
+        for (int row = 0; row < matrix.length; row++) {
+            for (int column = 0; column < matrix[row].length; column++) {
+                matrix[row][column] = input.nextDouble();
+            }
+        }
         System.out.println("It is " + (isMarkovMatrix(matrix) ? "" : "not ") + "a Markov matrix");
     }
 

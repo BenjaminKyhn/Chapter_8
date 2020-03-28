@@ -46,8 +46,6 @@ public class Exercise_8_26 {
                 }
             }
         }
-
-
         return sortedMatrix;
     }
 

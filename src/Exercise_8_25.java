@@ -3,6 +3,11 @@ import java.util.Scanner;
 public class Exercise_8_25 {
     public static void main(String[] args) {
         double[][] matrix = new double[3][3];
+        double[][] matrix2 = {
+                {0.15, 0.875, 0.375},
+                {0.55, 0.005, 0.225},
+                {0.30, 0.12, 0.4},
+        };
 
         Scanner input = new Scanner(System.in);
         System.out.println("Enter a 3-by-3 matrix row by row: ");

@@ -16,7 +16,7 @@ public class Exercise_8_31 {
         else
             System.out.printf("The intersection point is (%.2f, %.2f).", getIntersectingPoint(points)[0], getIntersectingPoint(points)[1]);
     }
-//2 2 5 -1.0 4.0 2.0 -1.0 -2.0
+
     public static double[] getIntersectingPoint(double[][] points) {
         double[] intersection = new double[2];
         double a = points[0][1] - points[1][1]; //y1 - y2;
